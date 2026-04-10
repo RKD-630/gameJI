@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A beautiful, fully-featured Chess game with AI opponent and full rules support."/>
+  <title>Chess ♟</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="chess.css"/>
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <a class="nav-link" href="index.html">🎮 Tic Tac Toe</a>
+           <h1 class="title">Chess <span class="accent">♟</span></h1>
+      <div class="mode-selector">
+        <button class="mode-btn active" id="btn2P" onclick="setMode('2player')">
+          <span>👥</span> 2 Players
+        </button>
+        <button class="mode-btn" id="btnAI" onclick="setMode('ai')">
+          <span>🤖</span> vs AI
+        </button>
+      </div>
+    </header>
+
+    <!-- Scores -->
+    <div class="scores-bar">
+      <div class="score-chip">
+        <span class="score-icon white-king">♔</span>
+        <span class="score-name">White</span>
+        <strong class="score-val" id="whiteScore">0</strong>
+      </div>
+      <span class="score-vs">vs</span>
+      <div class="score-chip">
+        <span class="score-icon black-king">♚</span>
+        <span class="score-name">Black</span>
+        <strong class="score-val" id="blackScore">0</strong>
+      </div>
+    </div>
+
+    <!-- Main Game Area -->
+    <div class="game-area">
+
+      <!-- Left Panel -->
+      <div class="side-panel left-panel">
+        <div class="panel-block">
+          <div class="panel-title">⚔ Captured</div>
+          <div class="captured-group">
+            <div class="cap-label">White took</div>
+            <div class="cap-pieces" id="capByWhite"></div>
+          </div>
+          <div class="captured-group">
+            <div class="cap-label">Black took</div>
+            <div class="cap-pieces" id="capByBlack"></div>
+          </div>
+        </div>
+        <div class="panel-block grow">
+          <div class="panel-title">📋 Moves</div>
+          <div class="move-list" id="moveList"></div>
+        </div>
+      </div>
+
+      <!-- Board Area -->
+      <div class="board-area">
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+          <div class="status-dot" id="statusDot"></div>
+          <span id="statusText">White's Turn</span>
+        </div>
+
+        <!-- Board + Labels -->
+        <div class="board-container">
+          <div class="rank-labels" id="rankLabels">
+            <span>8</span><span>7</span><span>6</span><span>5</span>
+            <span>4</span><span>3</span><span>2</span><span>1</span>
+          </div>
+          <div class="chess-board" id="chessBoard"></div>
+        </div>
+        <div class="file-labels" id="fileLabels">
+          <span>a</span><span>b</span><span>c</span><span>d</span>
+          <span>e</span><span>f</span><span>g</span><span>h</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <button class="ctrl-btn btn-new" onclick="initGame()">↺ New Game</button>
+          <button class="ctrl-btn btn-flip" onclick="flipBoard()">⇅ Flip</button>
+          <button class="ctrl-btn btn-undo" onclick="undoMove()" id="undoBtn">← Undo</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Promotion Modal -->
+  <div class="modal-bg" id="promotionModal">
+    <div class="modal-card">
+      <div class="modal-title">Promote Pawn</div>
+      <div class="promo-choices" id="promoChoices"></div>
+    </div>
+  </div>
+
+  <!-- Game Over Overlay -->
+  <div class="overlay" id="overlay">
+    <div class="result-card">
+      <div class="result-emoji" id="resultEmoji">♟</div>
+      <div class="result-title" id="resultTitle">Checkmate!</div>
+      <div class="result-sub"   id="resultSub">White Wins!</div>
+      <button class="btn-play-again" onclick="initGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="chess.js"></script>
+</body>
+</html>

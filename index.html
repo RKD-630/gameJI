@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A beautiful, modern Tic Tac Toe game with 2-player and AI modes."/>
+  <title>Tic Tac Toe ✦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">Tic<span class="accent">Tac</span>Toe</h1>
+      <p class="subtitle">Choose your mode and play!</p>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;justify-content:center;">
+        <a href="chess.html" style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#94a3b8;text-decoration:none;padding:0.4rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:600;transition:all 0.2s;" onmouseover="this.style.color='#f1f5f9';this.style.borderColor='#c084fc'" onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.1)'">♟ Chess</a>
+      
+      </div>
+    </header>
+
+
+    <!-- Mode Selector -->
+    <div class="mode-selector" id="modeSelector">
+      <button class="mode-btn active" id="btn2P" onclick="setMode('2player')">
+        <span class="mode-icon">👥</span>
+        <span>2 Players</span>
+      </button>
+      <button class="mode-btn" id="btnAI" onclick="setMode('ai')">
+        <span class="mode-icon">🤖</span>
+        <span>vs AI</span>
+      </button>
+    </div>
+
+    <!-- Scoreboard -->
+    <div class="scoreboard">
+      <div class="score-card" id="scoreX">
+        <div class="score-symbol x-symbol">✕</div>
+        <div class="score-label" id="labelX">Player X</div>
+        <div class="score-value" id="scoreXVal">0</div>
+      </div>
+      <div class="score-card draws">
+        <div class="score-symbol draw-symbol">◆</div>
+        <div class="score-label">Draws</div>
+        <div class="score-value" id="scoreDrawVal">0</div>
+      </div>
+      <div class="score-card" id="scoreO">
+        <div class="score-symbol o-symbol">○</div>
+        <div class="score-label" id="labelO">Player O</div>
+        <div class="score-value" id="scoreOVal">0</div>
+      </div>
+    </div>
+
+    <!-- Turn indicator -->
+    <div class="turn-indicator" id="turnIndicator">
+      <div class="turn-badge">
+        <span id="turnText">Player X's Turn</span>
+        <span class="turn-symbol" id="turnSymbol">✕</span>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div class="board" id="board">
+      <div class="cell" id="cell-0" onclick="handleClick(0)"></div>
+      <div class="cell" id="cell-1" onclick="handleClick(1)"></div>
+      <div class="cell" id="cell-2" onclick="handleClick(2)"></div>
+      <div class="cell" id="cell-3" onclick="handleClick(3)"></div>
+      <div class="cell" id="cell-4" onclick="handleClick(4)"></div>
+      <div class="cell" id="cell-5" onclick="handleClick(5)"></div>
+      <div class="cell" id="cell-6" onclick="handleClick(6)"></div>
+      <div class="cell" id="cell-7" onclick="handleClick(7)"></div>
+      <div class="cell" id="cell-8" onclick="handleClick(8)"></div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn btn-reset" onclick="resetGame()" id="resetBtn">
+        <span>↺</span> New Game
+      </button>
+      <button class="btn btn-clear" onclick="clearScores()">
+        <span>🗑</span> Clear Scores
+      </button>
+    </div>
+  </div>
+
+  <!-- Win Overlay -->
+  <div class="overlay" id="overlay">
+    <div class="result-card">
+      <div class="result-emoji" id="resultEmoji">🎉</div>
+      <div class="result-title" id="resultTitle">Player X Wins!</div>
+      <div class="result-sub" id="resultSub">Congratulations!</div>
+      <button class="btn btn-play-again" onclick="resetGame()">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
