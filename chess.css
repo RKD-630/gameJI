@@ -62,7 +62,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0;
 }
 
 .nav-link {
@@ -92,7 +92,7 @@ body {
 
 .mode-selector {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.15rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 50px;
@@ -112,6 +112,39 @@ body {
   box-shadow: 0 3px 15px rgba(192,132,252,0.35);
 }
 .mode-btn:not(.active):hover { background: var(--surface2); color: var(--text); }
+
+/* === Level Selector === */
+.level-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 4px;
+  width: 100%;
+  max-width: 280px;
+}
+.level-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  color: var(--muted);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.level-radio:hover {
+  color: var(--text);
+}
+.level-radio input[type="radio"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}
 
 /* === Scores Bar === */
 .scores-bar {

@@ -9,6 +9,7 @@ let gameActive = true;
 let scores = { X: 0, O: 0, D: 0 };
 let mode = '2player'; // '2player' or 'ai'
 let isAiThinking = false;
+let aiLevel = 'high'; // 'normal', 'medium', 'high'
 
 // Winning combinations
 const WIN_COMBOS = [
@@ -28,6 +29,15 @@ function setMode(newMode) {
   document.getElementById('btn2P').classList.toggle('active', mode === '2player');
   document.getElementById('btnAI').classList.toggle('active', mode === 'ai');
   document.getElementById('labelO').textContent = mode === 'ai' ? 'AI 🤖' : 'Player O';
+  document.getElementById('levelSelector').style.display = mode === 'ai' ? 'flex' : 'none';
+  clearScores();
+}
+
+function setAiLevel(level) {
+  aiLevel = level;
+  document.getElementById('btnNormal').classList.toggle('active', level === 'normal');
+  document.getElementById('btnMedium').classList.toggle('active', level === 'medium');
+  document.getElementById('btnHigh').classList.toggle('active', level === 'high');
   clearScores();
 }
 
@@ -207,6 +217,18 @@ function hideOverlay() {
 //  AI - Minimax
 // =============================================
 function getBestMove() {
+  const emptyIndices = board.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+  
+  if (aiLevel === 'normal') {
+    if (Math.random() < 0.7) {
+      return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+    }
+  } else if (aiLevel === 'medium') {
+    if (Math.random() < 0.3) {
+      return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+    }
+  }
+
   let bestScore = -Infinity;
   let bestIndex = -1;
 

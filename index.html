@@ -40,23 +40,11 @@
       </button>
     </div>
 
-    <!-- Scoreboard -->
-    <div class="scoreboard">
-      <div class="score-card" id="scoreX">
-        <div class="score-symbol x-symbol">✕</div>
-        <div class="score-label" id="labelX">Player X</div>
-        <div class="score-value" id="scoreXVal">0</div>
-      </div>
-      <div class="score-card draws">
-        <div class="score-symbol draw-symbol">◆</div>
-        <div class="score-label">Draws</div>
-        <div class="score-value" id="scoreDrawVal">0</div>
-      </div>
-      <div class="score-card" id="scoreO">
-        <div class="score-symbol o-symbol">○</div>
-        <div class="score-label" id="labelO">Player O</div>
-        <div class="score-value" id="scoreOVal">0</div>
-      </div>
+    <!-- AI Level Selector -->
+    <div class="level-selector" id="levelSelector" style="display: none;">
+      <button class="level-btn" id="btnNormal" onclick="setAiLevel('normal')">Normal</button>
+      <button class="level-btn" id="btnMedium" onclick="setAiLevel('medium')">Medium</button>
+      <button class="level-btn active" id="btnHigh" onclick="setAiLevel('high')">High</button>
     </div>
 
     <!-- Turn indicator -->
@@ -67,27 +55,52 @@
       </div>
     </div>
 
-    <!-- Game Board -->
-    <div class="board" id="board">
-      <div class="cell" id="cell-0" onclick="handleClick(0)"></div>
-      <div class="cell" id="cell-1" onclick="handleClick(1)"></div>
-      <div class="cell" id="cell-2" onclick="handleClick(2)"></div>
-      <div class="cell" id="cell-3" onclick="handleClick(3)"></div>
-      <div class="cell" id="cell-4" onclick="handleClick(4)"></div>
-      <div class="cell" id="cell-5" onclick="handleClick(5)"></div>
-      <div class="cell" id="cell-6" onclick="handleClick(6)"></div>
-      <div class="cell" id="cell-7" onclick="handleClick(7)"></div>
-      <div class="cell" id="cell-8" onclick="handleClick(8)"></div>
-    </div>
+    <div class="game-layout">
+      <div class="game-main">
+        <!-- Game Board -->
+        <div class="board" id="board">
+          <div class="cell" id="cell-0" onclick="handleClick(0)"></div>
+          <div class="cell" id="cell-1" onclick="handleClick(1)"></div>
+          <div class="cell" id="cell-2" onclick="handleClick(2)"></div>
+          <div class="cell" id="cell-3" onclick="handleClick(3)"></div>
+          <div class="cell" id="cell-4" onclick="handleClick(4)"></div>
+          <div class="cell" id="cell-5" onclick="handleClick(5)"></div>
+          <div class="cell" id="cell-6" onclick="handleClick(6)"></div>
+          <div class="cell" id="cell-7" onclick="handleClick(7)"></div>
+          <div class="cell" id="cell-8" onclick="handleClick(8)"></div>
+        </div>
+      </div>
 
-    <!-- Action Buttons -->
-    <div class="actions">
-      <button class="btn btn-reset" onclick="resetGame()" id="resetBtn">
-        <span>↺</span> New Game
-      </button>
-      <button class="btn btn-clear" onclick="clearScores()">
-        <span>🗑</span> Clear Scores
-      </button>
+      <div class="game-sidebar">
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+          <div class="score-card" id="scoreX">
+            <div class="score-symbol x-symbol">✕</div>
+            <div class="score-label" id="labelX">Player X</div>
+            <div class="score-value" id="scoreXVal">0</div>
+          </div>
+          <div class="score-card draws">
+            <div class="score-symbol draw-symbol">◆</div>
+            <div class="score-label">Draws</div>
+            <div class="score-value" id="scoreDrawVal">0</div>
+          </div>
+          <div class="score-card" id="scoreO">
+            <div class="score-symbol o-symbol">○</div>
+            <div class="score-label" id="labelO">Player O</div>
+            <div class="score-value" id="scoreOVal">0</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+          <button class="btn btn-reset" onclick="resetGame()" id="resetBtn">
+            <span>↺</span> New Game
+          </button>
+          <button class="btn btn-clear" onclick="clearScores()">
+            <span>🗑</span> Clear Scores
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

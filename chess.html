@@ -31,6 +31,21 @@
           <span>🤖</span> vs AI
         </button>
       </div>
+      <!-- AI Level Selector -->
+      <div class="level-selector" id="levelSelector" style="display: none; width:100%; justify-content:center; margin-top: 2px;">
+        <label class="level-radio">
+          <input type="radio" id="radNormal" value="normal" onchange="setAiLevel('normal')">
+          <span>Normal</span>
+        </label>
+        <label class="level-radio">
+          <input type="radio" id="radMedium" value="medium" onchange="setAiLevel('medium')">
+          <span>Medium</span>
+        </label>
+        <label class="level-radio">
+          <input type="radio" id="radHigh" value="high" onchange="setAiLevel('high')" checked>
+          <span>High</span>
+        </label>
+      </div>
     </header>
 
     <!-- Scores -->

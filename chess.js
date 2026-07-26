@@ -246,6 +246,13 @@ function minimax(b, depth, alpha, beta, maxWhite, epSq, cast) {
 function getAIMove() {
   const moves = allLegal(board, false, epSq, castR); // AI = Black
   if (!moves.length) return null;
+
+  if (aiLevel === 'normal' && Math.random() < 0.5) {
+    return moves[Math.floor(Math.random() * moves.length)];
+  } else if (aiLevel === 'medium' && Math.random() < 0.3) {
+    return moves[Math.floor(Math.random() * moves.length)];
+  }
+
   moves.sort(([,,,tr,tc,],) => board[tr][tc] ? -1 : 1); // captures first
   let bestScore=Infinity, bestMove=null;
   for (const [fr,fc,tr,tc,fl] of moves) {
@@ -259,6 +266,7 @@ function getAIMove() {
 
 // =====================  GAME STATE VARIABLES  =====================
 let board, turn, selSq, epSq, castR, capW, capB, moveHist, gameOver, scores, gameMode, aiThink, flipped, pendPromo, lastMove;
+let aiLevel = 'high';
 
 // =====================  NOTATION  =====================
 function notation(b, fr, fc, tr, tc, flag, piece) {
@@ -528,6 +536,15 @@ function setMode(mode) {
   gameMode=mode;
   document.getElementById('btn2P').classList.toggle('active', mode==='2player');
   document.getElementById('btnAI').classList.toggle('active', mode==='ai');
+  document.getElementById('levelSelector').style.display = mode === 'ai' ? 'flex' : 'none';
+  initGame();
+}
+
+function setAiLevel(level) {
+  aiLevel = level;
+  document.getElementById('radNormal').checked = (level === 'normal');
+  document.getElementById('radMedium').checked = (level === 'medium');
+  document.getElementById('radHigh').checked = (level === 'high');
   initGame();
 }
 
